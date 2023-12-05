@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Login e Registro</title>
+</head>
+<body>
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="#">
+        <h1>Criar Conta</h1>
+        <input type="text" placeholder="Nome" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Senha" />
+        <button>Registrar</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form action="#">
+        <h1>Entrar</h1>
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Senha" />
+        <a href="#">Esqueceu sua senha?</a>
+        <button>Entrar</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h2>Bem-vindo de volta!</h2>
+          <p>Para continuar conectado, faça login com suas informações pessoais.</p>
+          <button class="ghost" id="signIn">Entrar</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h2>Olá, Amigo!</h2>
+          <p>Inscreva-se e junte-se a nós.</p>
+          <button class="ghost" id="signUp">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  display: grid;
+  height: 100vh;
+  place-items: center;
+  background: #f1f1f1;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  padding: 20px;
+  max-width: 400px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  background: #333;
+  border: none;
+  cursor: pointer;
+}
+
+button.ghost {
+  background: transparent;
+  border: 1px solid #333;
+  color: #333;
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: translateX(-50%);
+}
+
+.overlay {
+  position: relative;
+  width: 200%;
+  height: 100%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  transform: translateX(-25%);
+}
+
+.overlay-right {
+  transform: translateX(25%);
+}
+
+.overlay-panel h2 {
+  margin: 0;
+}
+
+.overlay-panel p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+  container.classList.add('right-panel-active');
+});
+
+signInButton.addEventListener('click', () => {
+  container.classList.remove('right-panel-active');
+});
+
